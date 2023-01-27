@@ -19,7 +19,7 @@ exports.up = function(db) {
     type: 'string',
     length: 200,
     notNull: true,
-    defaultValue: 'https://graphql.bitquery.io'
+    defaultValue: 'https://graphql.lamina1.dev'
   })
 };
 

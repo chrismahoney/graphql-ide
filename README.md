@@ -1,7 +1,7 @@
 ### Bitquery Editor
 
 
-With [**Bitquery Editor**](https://graphql.bitquery.io/), we are changing the way how developers work with blockchains data.
+With [**Bitquery Editor**](https://graphql.lamina1.dev/), we are changing the way how developers work with blockchains data.
 
 Using our Bitquery editor, developers can create GraphQL queries to use them as APIs. You can also share queries with anyone; for example, check this [GraphQL query](https://explorer.bitquery.io/graphql/NPrY9TzCX1) for the top 10 DEX trades based on USD amount.
 

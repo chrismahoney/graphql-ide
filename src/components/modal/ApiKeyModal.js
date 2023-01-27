@@ -44,7 +44,7 @@ const ApiKeyModal = observer(function ApiKeyModal({ active }) {
 							</button>
 						</div>
 					</div>
-					<p>Your graphql API endpoint URL - https://graphql.bitquery.io</p>
+					<p>Your graphql API endpoint URL - https://graphql.lamina1.dev</p>
 					<Form.Group className="text-center">
 						<Button variant="primary" onClick={closeHandler}>Ok</Button>
 					</Form.Group>

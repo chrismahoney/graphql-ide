@@ -1,14 +1,12 @@
 FROM node:14.15-alpine AS builder
 
-LABEL maintainer="Andrey Gridin <andrey@bitquery.io>"
-
 ARG ENV
 ARG SCHEME
 ARG DOMAIN
 ARG REACT_APP_IDE_URL
 
 ENV NODE_ENV=${ENV:-production}
-ENV BACKEND_URL=${SCHEME:-https}://${DOMAIN:-graphql.bitquery.io}
+ENV BACKEND_URL=${SCHEME:-https}://${DOMAIN:-graphql.lamina1.dev}
 ENV REACT_APP_IDE_URL=${REACT_APP_IDE_URL:-/ide}
 ENV PUBLIC_URL=$BACKEND_URL$REACT_APP_IDE_URL
 ENV IDE_URL=$PUBLIC_URL
@@ -20,9 +18,11 @@ COPY package.json package-lock.json* ./
 
 RUN chown node:node -R /app
 
-USER node
+RUN apk add python make g++
 
-RUN npm install --production
+USER root
+
+RUN npm install -g nodemon && npm install --production
 
 COPY --chown=node:node . .
 

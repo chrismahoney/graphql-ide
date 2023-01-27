@@ -57,7 +57,7 @@ class Queries {
 		variables: '{}',
 		data_type: 'response',
 		config: {},
-		endpoint_url: 'https://graphql.bitquery.io',
+		endpoint_url: 'https://graphql.lamina1.dev',
 		id: null,
 		widget_id: 'json.widget'
 	}
@@ -146,7 +146,7 @@ class Queries {
 			this.query[this.query.length-1].config = JSON.parse(this.query[this.query.length-1].config)
 		}
 		if (!this.query[this.query.length-1].endpoint_url) 
-			this.query[this.query.length-1].endpoint_url = 'https://graphql.bitquery.io'
+			this.query[this.query.length-1].endpoint_url = 'https://graphql.lamina1.dev'
 		TabsStore.addNewTab(params.name)
 	}
 	setSharedQueires = queries => {

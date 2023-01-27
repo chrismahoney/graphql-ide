@@ -1,6 +1,6 @@
 x-common-dns: &common-dns
   dns: 10.0.0.254
-  dns_search: ${LC_COMPOSE_CLUSTER}.local
+  dns_search: localhost
   dns_opt: [ 'ndots:1' ]
 x-common-network: &common-network
   network_mode: bridge
@@ -11,8 +11,15 @@ x-graceful-stop: &graceful-stop
   stop_signal: SIGINT
 
 services:
+  redis:
+    image: redislabs/redismod
+    hostname: explorer-redis
+    ports:
+      - '6379:6379'
+
   ide:
     image: ${LC_COMPOSE_IMAGE}:${LC_COMPOSE_IMAGE_TAG}
+    hostname: explorer-ide
     command: [
       "node", "./src/server/server.js"
     ] 
@@ -35,7 +42,16 @@ services:
       - REACT_APP_ENDPOINT_URL=${LC_COMPOSE_REACT_APP_ENDPOINT_URL}
       - PUBLIC_URL=${LC_COMPOSE_PUBLIC_URL}
       - CAT=${LC_COMPOSE_CAT}
-    <<: *graceful-stop
-    <<: *common-dns
-    <<: *common-network
-    <<: *common-restart
+    stop_grace_period: 1m
+    stop_signal: SIGINT
+    #dns: 10.0.0.254
+    #dns_search: localhost
+    #dns_opt: [ 'ndots:1' ]
+    restart: on-failure
+    depends_on:
+      - redis
+
+networks:
+  default:
+    name: devnpmnet
+    external: true

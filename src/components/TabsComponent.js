@@ -47,7 +47,7 @@ const TabsComponent = observer(() => {
 					} catch (error) {
 						if (error.response.status === 400) {
 							try {
-								const response = await fetch("https://graphql.bitquery.io/", {
+								const response = await fetch("https://graphql.lamina1.dev/", {
 									"headers": {
 										"accept": "application/json",
 										"content-type": "application/json",
